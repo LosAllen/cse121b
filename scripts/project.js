@@ -4,10 +4,8 @@ function getWeather() {
         alert('Please enter a location.');
         return;
     }
-
     const apiKey = '3db45986fb6649958ac223038241502';
     const apiUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${encodeURIComponent(location)}`;
-
     fetch(apiUrl)
         .then(response => {
             if (!response.ok) {
@@ -26,14 +24,11 @@ function getWeather() {
 
 function displayWeather(data) {
     const weatherInfo = document.getElementById('weatherInfo');
-
     if (!data || !data.current) {
         weatherInfo.innerText = 'Error: Weather data not available';
         return;
     }
-
     const currentData = data.current;
-
     weatherInfo.innerHTML = `
         <h2>Weather in ${data.location.name}</h2>
         <p>Temperature: ${currentData.temp_c}°C</p>
@@ -41,6 +36,3 @@ function displayWeather(data) {
         <p>Wind Speed: ${currentData.wind_kph} km/h</p>
     `;
 }
-
-
-
